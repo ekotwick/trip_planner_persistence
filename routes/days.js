@@ -22,9 +22,13 @@ router.get('/:id', function(req,res,next) {
 
 // Let's get bold!
 router.post('/', function(req,res,next) {
+    // these show up on the terminal, NOT in the browserp
+    console.log('got to the router');
+    console.log(req);
     Day.create({
-
+        day: req.body.day
     })
+    res.send(req.body.day);
 })
 
 router.put('/:id/:attraction', function(req,res,next) {

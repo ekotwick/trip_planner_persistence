@@ -53,10 +53,21 @@ var tripModule = (function () {
       currentDay = newDay;
     }
     switchTo(newDay);
+    // var today = $(event.target).number;
+    // var today = this.number
+    var $dayNumber = +$addButton.siblings(":last").text()
     $.ajax({
       method: 'POST',
-      url: '/days'
+      url: '/days',
+      data: {
+        day: $dayNumber
+      }
     })
+    .then(function(val){
+      console.log('ajax triggered');
+      console.log(val);
+    })
+    console.log('clicking add day button')
   }
 
   function deleteCurrentDay () {
