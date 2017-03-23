@@ -14,8 +14,6 @@
  * returns that object. That method is used principally in `options.js`.
  */
 
-// needs data?
-
 var attractionModule = (function () {
 
   // jQuery selections

@@ -1,12 +1,25 @@
-// // we want to get the data here.
-// $(document).ready(
-// 	console.log('wtf')
-// 	// $.get('/')
-// 	$.ajax({
-// 		method: 'GET',
-// 		url: '/'
-// 	})
 
-// ).then(function(data){
-// 	console.log(data);
-// })
+var dataModule = (function () {
+
+  var publicAPI = {
+
+    hotelsPromise: $.ajax({
+      method: 'GET',
+      url: '/api/hotels'
+    }),
+
+    restaurantsPromise: $.ajax({
+      method: 'GET',
+      url: '/api/restaurants'
+    }),
+
+    activitiesPromise: $.ajax({
+      method: 'GET',
+      url: '/api/activities'
+    })
+
+  };
+
+  return publicAPI;
+
+}());
