@@ -41,14 +41,18 @@ router.put('/:id/hotels', function(req,res,next) {
     //     })
     // })
     // .catch(next);
-    // Day.findOne({
-    //     where: {
-    //         day: req.params.id
-    //     }
-    // })
-    // .then(function(day){
-    //     day.update()
-    // })  
+
+    Day.findOne({
+        where: {
+            day: req.params.id
+        }
+    })
+    .then((day)=>{
+        day.setHotel(1)
+    })
+    .then(function(setDay){
+        res.json(setDay)
+    })  
 })
 
 router.put('/:id/:restuarants', function(req,res,next) {
@@ -58,7 +62,7 @@ router.put('/:id/:restuarants', function(req,res,next) {
         }
     })
     .then(function(day){
-        day.update
+        day.update()
     })  
 })
 
