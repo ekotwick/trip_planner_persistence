@@ -6,6 +6,8 @@ var path = require('path');
 
 var db = require('./models');
 
+var apiRouter = require('./routes/api.js');
+
 var app = express();
 
 // nunjucks rendering boilerplate
@@ -27,6 +29,8 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 // serve dynamic routes
 app.use(require('./routes'));
+
+app.use('/api', apiRouter);
 
 // failed to catch req above means 404, forward to error handler
 app.use(function (req, res, next) {

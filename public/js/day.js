@@ -13,6 +13,8 @@
  * This module has one public method: `.create()`, used by `days.js`.
  */
 
+// needs data?
+
 var dayModule = (function () {
 
   // jQuery selections

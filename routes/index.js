@@ -21,3 +21,12 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+
+// $ajax({ method : GET, url: '/api/options' })
+
+// $.get('/api/options/hotels')
+// .then(function(hotels){
+//  hotels.forEach(function(hotel){
+//    console.log(hotel.name)});
+// });
