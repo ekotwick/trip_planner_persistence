@@ -63,11 +63,10 @@ var tripModule = (function () {
         day: $dayNumber
       }
     })
-    .then(function(val){
-      console.log('ajax triggered');
-      console.log(val);
-    })
-    console.log('clicking add day button')
+    .then(function(suc, err){
+      if (suc) return 'cool'
+      else throw err
+    });
   }
 
   function deleteCurrentDay () {

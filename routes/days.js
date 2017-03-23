@@ -22,17 +22,55 @@ router.get('/:id', function(req,res,next) {
 
 // Let's get bold!
 router.post('/', function(req,res,next) {
-    // these show up on the terminal, NOT in the browserp
-    console.log('got to the router');
-    console.log(req);
     Day.create({
         day: req.body.day
     })
     res.send(req.body.day);
 })
 
-router.put('/:id/:attraction', function(req,res,next) {
-    
+router.put('/:id/hotels', function(req,res,next) {
+    // Day.update(req.body, {
+    //     where: {day: req.params.id},
+    //     returning: true
+    // })
+    // .then(function([numUpdated, firstUpdatedInstance]){
+    //     res.json({
+    //         message: 'Updated successfully',
+    //         numAffectedRows: numUpdated,
+    //         affectedRow: firstUpdatedInstance
+    //     })
+    // })
+    // .catch(next);
+    // Day.findOne({
+    //     where: {
+    //         day: req.params.id
+    //     }
+    // })
+    // .then(function(day){
+    //     day.update()
+    // })  
+})
+
+router.put('/:id/:restuarants', function(req,res,next) {
+    Day.findOne({
+        where: {
+            day: req.params.id
+        }
+    })
+    .then(function(day){
+        day.update
+    })  
+})
+
+router.put('/:id/:activities', function(req,res,next) {
+    Day.findOne({
+        where: {
+            day: req.params.id
+        }
+    })
+    .then(function(day){
+        day.update
+    })  
 })
 
 router.delete('/:id', function(req,res,next) {
