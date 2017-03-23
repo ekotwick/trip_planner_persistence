@@ -43,7 +43,18 @@ $(function(){
     // get associated attraction and add it to the current day in the trip
     var attraction = attractionsModule.getByTypeAndId(type, id);
     tripModule.addToCurrent(attraction);
-    console.log(attraction);
+    // console.log(attraction);
+
+    var $currentDayNum = +$('.current-day').text();
+
+    $.ajax({
+      method: 'PUT',
+      url: `/days/${$currentDayNum}/${type}/${id}`,
+    })
+
+    console.log('type: ' + type);
+    console.log('id: ' + id);
+
   });
 
 });

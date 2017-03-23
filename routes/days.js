@@ -7,7 +7,7 @@ const Day = require('../models/day').Day
 router.get('/', function(req,res,next) {
     Day.findAll()
     .then(function(days){
-       res.json(days) 
+       res.send(days);
     })
     .catch(next)
 })
@@ -28,53 +28,33 @@ router.post('/', function(req,res,next) {
     res.send(req.body.day);
 })
 
-router.put('/:id/hotels', function(req,res,next) {
-    // Day.update(req.body, {
-    //     where: {day: req.params.id},
-    //     returning: true
-    // })
-    // .then(function([numUpdated, firstUpdatedInstance]){
-    //     res.json({
-    //         message: 'Updated successfully',
-    //         numAffectedRows: numUpdated,
-    //         affectedRow: firstUpdatedInstance
-    //     })
-    // })
-    // .catch(next);
+router.put('/:id/:attraction/:identifier', function(req, res, next){
 
     Day.findOne({
         where: {
             day: req.params.id
         }
     })
-    .then((day)=>{
-        day.setHotel(1)
-    })
-    .then(function(setDay){
-        res.json(setDay)
-    })  
-})
-
-router.put('/:id/:restuarants', function(req,res,next) {
-    Day.findOne({
-        where: {
-            day: req.params.id
+    .then((day) => {
+        if (req.params.attraction === 'hotel') {
+            day.setHotel(req.params.identifier)
+            // returning true 
+        } else if (req.params.attraction === 'restaurant') {
+            day.addRestaurants(req.params.identifier)
+            // returning true
+        } else if (req.params.attraction === 'activity') {
+            day.addActivities(req.params.identifier)
+            // returning true
+        } else {
+            throw Error ('what the hell did you pick?');
         }
+        
     })
-    .then(function(day){
-        day.update()
-    })  
-})
+    .then(function(val){
+        res.json(val)
+    })
+    .catch(next);
 
-router.put('/:id/:activities', function(req,res,next) {
-    Day.findOne({
-        where: {
-            day: req.params.id
-        }
-    })
-    .then(function(day){
-        day.update
-    })  
 })
 
 router.delete('/:id', function(req,res,next) {

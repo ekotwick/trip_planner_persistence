@@ -15,3 +15,14 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+
+// this has to go somewhere AFTER the html has been rendered
+  // $.ajax({
+  // 	method: 'GET',
+  // 	url: '/days'
+  // })
+  // .then(function(data){
+  // 	console.log('ajax requested');
+  // 	console.log(data)
+  // })
