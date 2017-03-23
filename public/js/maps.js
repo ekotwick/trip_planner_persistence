@@ -69,14 +69,14 @@ var mapModule = (function () {
       marker.setAnimation(google.maps.Animation.DROP);
       marker.setMap(currentMap);
       currentMarkers.push(marker);
-      extendBounds(marker);
+      //extendBounds(marker);
       return marker;
     },
 
     hide: function (marker) {
       marker.setMap(null);
       currentMarkers.splice(currentMarkers.indexOf(marker), 1);
-      narrowBounds();
+      //narrowBounds();
       return marker;
     }
 
